@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GvO Accesorios Móviles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #00d4ff;
+            --neon-green: #00ff87;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+        }
+
+        body { 
+            background-color: var(--dark-bg); 
+            color: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Navbar con efecto cristal */
+        .navbar {
+            background: rgba(30, 41, 59, 0.8) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, var(--primary-blue), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ESTILO DEL ESLOGAN RESALTADO */
+        .slogan-destacado {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            padding: 10px 25px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+            animation: fadeInSlide 1.2s ease-out;
+        }
+
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .separador-neon {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-blue), var(--neon-green));
+            margin: 15px auto 0;
+            border-radius: 10px;
+            opacity: 0.7;
+        }
+
+        /* Tarjetas de productos dinámicas */
+        .card { 
+            background-color: var(--card-bg);
+            border-radius: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            overflow: hidden;
+        }
+
+        .card:hover { 
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-blue);
+        }
+
+        .card-img-top {
+            background-color: #ffffff;
+            padding: 10px;
+            transition: 0.5s;
+        }
+
+        .card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #f1f5f9;
+        }
+
+        .precio-tag { 
+            color: var(--neon-green); 
+            font-weight: bold; 
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px rgba(0, 255, 135, 0.2);
+        }
+
+        .btn-whatsapp { 
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            border: none;
+            color: white; 
+            font-weight: 600; 
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            color: white;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border-radius: 25px;
+            border: 1px solid var(--primary-blue);
+        }
+
+        .modal-header { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .modal-footer { border-top: none; }
+        .btn-close { filter: invert(1); }
+
+        footer {
+            background: rgba(15, 23, 42, 0.9);
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .badge-disponibilidad {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 212, 255, 0.8);
+            font-size: 0.7rem;
+            padding: 5px 10px;
+            border-radius: 10px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark mb-4">
+        <div class="container justify-content-center">
+            <span class="navbar-brand">🔌 GvO ACCESORIOS MÓVILES</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="text-center mb-5">
+            <div class="slogan-destacado">
+                Calidad y rapidez en el corazón de La Habana
+            </div>
+            <div class="separador-neon"></div>
+        </div>
+
+        <div class="row row-cols-2 row-cols-md-3 g-4">
+            {% for p in productos %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <span class="badge-disponibilidad">Disponible</span>
+                    <img src="/static/{{ p.img }}" class="card-img-top" data-bs-toggle="modal" data-bs-target="#modal{{ p.id }}" style="height: 180px; object-fit: contain; cursor: pointer;">
+                    <div class="card-body text-center d-flex flex-column justify-content-between">
+                        <div>
+                            <h6 class="card-title mb-2">{{ p.nombre }}</h6>
+                            <p class="precio-tag mb-3">{{ p.precio }}</p>
+                        </div>
+                        <a href="https://wa.me/5358870159?text=Hola! Me interesa el {{ p.nombre }}" class="btn btn-whatsapp btn-sm w-100 py-2">
+                            Comprar Ahora
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modal{{ p.id }}" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content shadow-lg">
+                        <div class="modal-header">
+                            <h5 class="modal-title w-100 text-center">{{ p.nombre }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center p-4">
+                            <div style="background: white; border-radius: 15px; padding: 15px;" class="mb-4">
+                                <img src="/static/{{ p.img }}" class="img-fluid" style="max-height: 250px;">
+                            </div>
+                            <h4 class="precio-tag mb-3">{{ p.precio }}</h4>
+                            <div class="text-start p-3" style="background: rgba(255,255,255,0.05); border-radius: 12px;">
+                                <p class="mb-0 small" style="color: #cbd5e1;">{{ p.detalle }}</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="https://wa.me/5358870159?text=Hola! Me interesa el {{ p.nombre }}" class="btn btn-whatsapp w-100 py-3">
+                                Chatear con Vendedor
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer class="text-center py-5">
+        <div class="container">
+            <p class="mb-1">📍 La Habana, Cuba</p>
+            <p class="mb-3" style="color: var(--primary-blue);">📞 Contacto: +53 58870159</p>
+            <div style="font-size: 0.8rem; opacity: 0.5;">
+                &copy; 2026 GvO Accesorios Móviles. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
