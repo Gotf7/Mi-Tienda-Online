@@ -8,21 +8,21 @@ productos = [
         "id": 1,
         "nombre": "Cargador Samsung 45W",
         "precio": "$4200cup",
-        "img": "Cargador Samsung 45W.WebP",
+        "img": "Cargador Samsung 45W.jpg",
         "detalle": "Travel Adapter de 45W con tecnología Super Fast Charging 2.0. Incluye cable USB-C a USB-C de 5 amperios. Ideal para serie Galaxy S20 Ultra y superiores."
     },
     {
         "id": 2,
         "nombre": "Cargador Moreka 40W",
         "precio": "$4000cup",
-        "img": "Cargador Moreka 40W .WebP",
+        "img": "Cargador Moreka 40W .jpg",
         "detalle": "Modelo AC111-Carga Superrápida 40W. Puertos 20W PD y 20W QC 3.0. Incluye cable Tipo-C a Tipo-C de 1 metro y protección contra sobrecarga."
     },
     {
         "id": 3,
         "nombre": "Power Bank Solar 30,000mAh",
         "precio": "$18000cup",
-        "img": "Cargador Portátil 30000mAh.WebP",
+        "img": "Cargador Portátil 30000mAh.jpg",
         "detalle": """✅Capacidad: 30,000 mAh (111Wh/3.7V), lo que permite múltiples cargas completas para la mayoría de los teléfonos inteligentes.
 
 ✅Cables Integrados:
@@ -36,7 +36,7 @@ productos = [
         "id": 4,
         "nombre": "Power Bank Buytiti 10,000mAh",
         "precio": "$7000cup",
-        "img": "Cargador Portátil 10000mAh.WebP",
+        "img": "Cargador Portátil 10000mAh.jpg",
         "detalle": """Cargador Portátil Buytiti de 10000mAh. 
 
 Capacidad: 10000 mAh, capaz de proporcionar aproximadamente 1.5 a 2 cargas completas para la mayoría de los teléfonos inteligentes modernos. 
@@ -51,28 +51,28 @@ Funciones adicionales: Incorpora una linterna LED, un gancho colgante y una entr
         "id": 5,
         "nombre": "Cargador para Coche",
         "precio": "$3600cup",
-        "img": "Cargador para coche.WebP",
+        "img": "Cargador para coche.jpg",
         "detalle": "6 puertos de carga rápida (4 USB y 2 Tipo-C). Pantalla digital LED con voltaje en tiempo real y protección de sobrecarga."
     },
     {
         "id": 6,
         "nombre": "Cables 1HORA",
         "precio": "$700cup",
-        "img": "Cables 1HORA.WebP",
+        "img": "Cables 1HORA.jpg",
         "detalle": "Disponibles en Tipo C, V8 y iPhone. Soporta carga rápida y transferencia de datos de alta velocidad."
     },
     {
         "id": 7,
         "nombre": "Portacelular",
         "precio": "$3200cup",
-        "img": "Portacelular.WebP",
+        "img": "Portacelular.jpg",
         "detalle": "Soporte de seguridad para bicicletas y motos. Diseñado para usar GPS o música con total estabilidad al conducir."
     },
     {
         "id": 8,
         "nombre": "Xiaomi Redmi 14C",
         "precio": "$120usd",
-        "img": "Xiaomi Redmi 14C.WebP",
+        "img": "Xiaomi Redmi 14C.jpg",
         "detalle": """Xiaomi Redmi 14C, un smartphone de gama de entrada lanzado a finales de agosto de 2024. La versión que muestras en la imagen cuenta con 8GB de memoria RAM y 128GB de almacenamiento interno, como indica la etiqueta de la caja. 
 A continuación, te detallo sus especificaciones principales:
 Especificaciones Técnicas
