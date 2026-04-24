@@ -73,8 +73,9 @@ Funciones adicionales: Incorpora una linterna LED, un gancho colgante y una entr
         "nombre": "Xiaomi Redmi 14C",
         "precio": "$120usd",
         "img": "Xiaomi Redmi 14C.jpg",
-        "detalle": """Xiaomi Redmi 14C, un smartphone de gama de entrada lanzado a finales de agosto de 2024. La versión que muestras en la imagen cuenta con 8GB de memoria RAM y 128GB de almacenamiento interno, como indica la etiqueta de la caja. 
-A continuación, te detallo sus especificaciones principales:
+        "detalle": """Xiaomi Redmi 14C smartphone 2024.
+         8GB de memoria RAM y 128GB de almacenamiento interno, como indica la etiqueta de la caja. 
+ Especificaciones principales:
 Especificaciones Técnicas
 Pantalla: LCD de 6,88 pulgadas con resolución HD+ (1640 x 720 px) y una tasa de refresco fluida de 120 Hz.
 Procesador: MediaTek Helio G81-Ultra (ocho núcleos hasta 2,0 GHz).
@@ -84,7 +85,7 @@ Frontal: 13 MP para selfies.
 Batería: Capacidad de 5.160 mAh con soporte para carga rápida de 18W.
 Sistema Operativo: Xiaomi HyperOS basado en Android 14.
 Otras características: Incluye conector jack de 3,5 mm para auriculares, Radio FM, sensor de huellas lateral y soporte para Dual SIM."""
-    }
+    }.
 ]
 
 @app.route('/')
