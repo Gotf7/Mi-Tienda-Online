@@ -94,7 +94,19 @@ Silencioso: Sus clics reducen el ruido hasta en un 90%, ideal para entornos tran
 Resolución Ajustable (DPI): Ofrece tres niveles de sensibilidad (800, 1200 y 1600 DPI) para adaptarse a diferentes tareas y pantallas.
 Alcance: Funciona a una distancia de hasta 10 metros de la computadora.
 Alimentación: Utiliza una pila AA (no incluida en algunos paquetes), con una duración estimada de hasta 18 meses gracias a su modo de ahorro de energía.
-Compatibilidad: Funciona con Windows, macOS, Linux, Chrome OS y Android."""}  
+Compatibilidad: Funciona con Windows, macOS, Linux, Chrome OS y Android."""},  
+     { "id": 11,
+        "nombre": "Mouse Inalámbrico Buytiti",
+        "precio": "$4300cup",
+        "img": "Mouse Buytiti.jpg",
+        "detalle": """Mouse inalámbrico recargable con luz LED RGB de la marca Buytiti, específicamente el modelo RF-2835. Es un periférico diseñado tanto para el trabajo diario como para juegos ocasionales, destacando por su diseño ergonómico y delgado que reduce la fatiga durante el uso prolongado. 
+
+Características Principales
+Doble Conectividad: Permite conectarse a través de Bluetooth (ideal para laptops y tabletas) o mediante un nano receptor USB de 2.4 GHz (radiofrecuencia) que se guarda en la parte inferior del mouse.
+Sensibilidad Ajustable: Cuenta con un botón dedicado para cambiar los DPI (puntos por pulgada), ofreciendo niveles de hasta 1600 DPI o 3200 DPI según la variante del modelo.
+Batería Recargable: No requiere pilas externas. Se carga mediante un cable USB (incluido) y una carga completa de aproximadamente 2 horas puede proporcionar energía para varias semanas de uso.
+Iluminación RGB: Presenta luces LED que cambian de color automáticamente en el perímetro y la rueda de desplazamiento.
+Compatibilidad: Funciona con Windows, macOS, Android y Smart TVs"""}
 ]
 
 @app.route('/')
