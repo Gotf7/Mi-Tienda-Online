@@ -69,7 +69,32 @@ productos = [
         "precio": "$3200cup",
         "img": "Portacelular.jpg",
         "detalle": "Soporte de seguridad para bicicletas y motos. Diseñado para total estabilidad al conducir."
-    }
+    },
+    {   
+        "id": 9,
+        "nombre": "Bocina Portátil",
+        "precio": "$11500cup",
+        "img": "Bocina inalámbrica.jpg",
+        "detalle": """Bocina inalámbrica portátil 1Hora BOC242 en color negro. Este altavoz se caracteriza por su diseño compacto y cilíndrico, que incluye un sistema de iluminación RGB ajustable sincronizado con la música. 
+
+Especificaciones y Características
+Potencia de sonido: Cuenta con 10W de potencia, ofreciendo un sonido estéreo con agudos claros y graves profundos.
+Batería: Tiene una capacidad de 2400 mAh, lo que proporciona aproximadamente 3.5 horas de uso continuo con una sola carga, como se indica en el empaque de la imagen.
+Conectividad: Utiliza tecnología Bluetooth 5.1 para una conexión estable. También soporta múltiples entradas como USB, tarjeta micro SD (TF), AUX y cuenta con radio FM integrada.
+Tecnología TWS: Permite el emparejamiento de dos bocinas del mismo modelo para obtener un sonido estéreo inalámbrico real."""},
+      {
+        "id": 10,
+        "nombre": "Mouse inhalámbrico 1HORA",
+        "precio": "$4500cup",
+        "img": "Mouse 1HORA.jpg",
+        "detalle": """Mouse Inalámbrico 1Hora, específicamente el modelo RAT001, un dispositivo ergonómico diseñado para ofrecer comodidad y un funcionamiento silencioso. Se caracteriza por ser una opción económica que utiliza una conexión estable de 2.4 GHz mediante un receptor nano USB. 
+
+Características Principales
+Silencioso: Sus clics reducen el ruido hasta en un 90%, ideal para entornos tranquilos como bibliotecas u oficinas.
+Resolución Ajustable (DPI): Ofrece tres niveles de sensibilidad (800, 1200 y 1600 DPI) para adaptarse a diferentes tareas y pantallas.
+Alcance: Funciona a una distancia de hasta 10 metros de la computadora.
+Alimentación: Utiliza una pila AA (no incluida en algunos paquetes), con una duración estimada de hasta 18 meses gracias a su modo de ahorro de energía.
+Compatibilidad: Funciona con Windows, macOS, Linux, Chrome OS y Android."""}  
 ]
 
 @app.route('/')
