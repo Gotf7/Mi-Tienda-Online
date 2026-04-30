@@ -24,7 +24,7 @@ productos = [
     {
         "id": 2,
         "nombre": "Cargador Samsung 45W",
-        "precio": "$4200cup",
+        "precio": "$4300cup",
         "img": "Cargador Samsung 45W.jpg",
         "detalle": "Travel Adapter de 45W con tecnología Super Fast Charging 2.0. Incluye cable USB-C a USB-C."
     },
