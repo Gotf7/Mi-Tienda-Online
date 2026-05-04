@@ -106,7 +106,19 @@ Doble Conectividad: Permite conectarse a través de Bluetooth (ideal para laptop
 Sensibilidad Ajustable: Cuenta con un botón dedicado para cambiar los DPI (puntos por pulgada), ofreciendo niveles de hasta 1600 DPI o 3200 DPI según la variante del modelo.
 Batería Recargable: No requiere pilas externas. Se carga mediante un cable USB (incluido) y una carga completa de aproximadamente 2 horas puede proporcionar energía para varias semanas de uso.
 Iluminación RGB: Presenta luces LED que cambian de color automáticamente en el perímetro y la rueda de desplazamiento.
-Compatibilidad: Funciona con Windows, macOS, Android y Smart TVs"""}
+Compatibilidad: Funciona con Windows, macOS, Android y Smart TVs"""},
+{     "id": 12,
+        "nombre": "Tiras LED RGB",
+        "precio": "4500cup",
+        "img": "Tiras LED RGB.png",
+        "detalle": """Kit completo de tiras de luces LED RGB
+        Diseñado para la decoración de interiores y exteriores con efectos de iluminación personalizables. El conjunto incluye la tira de LED enrollada, un control remoto infrarrojo y un adaptador de corriente.
+        Características Principales:
+        Longitud estándar: Generalmente vienen en presentaciones de 5 metros (16.4 pies).Tecnología LED: Suele utilizar chips SMD 5050 o SMD 2835, que permiten una amplia gama de colores.
+        Control Remoto: Permite cambiar colores, ajustar el brillo y seleccionar modos dinámicos como flash, desvanecimiento o estroboscópico.
+        Instalación: La mayoría cuenta con un reverso autoadhesivo para facilitar su colocación en diversas superficies.
+        Personalización: Son recortables en puntos marcados (usualmente cada 3 o 5 LEDs) para adaptarse al espacio deseado."""
+        }
 ]
 
 @app.route('/')
