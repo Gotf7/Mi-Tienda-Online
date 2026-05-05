@@ -109,7 +109,7 @@ Iluminación RGB: Presenta luces LED que cambian de color automáticamente en el
 Compatibilidad: Funciona con Windows, macOS, Android y Smart TVs"""},
 {     "id": 12,
         "nombre": "Tiras LED RGB",
-        "precio": "4500cup",
+        "precio": "4000cup",
         "img": "Tiras LED RGB.png",
         "detalle": """Kit completo de tiras de luces LED RGB
         Diseñado para la decoración de interiores y exteriores con efectos de iluminación personalizables. El conjunto incluye la tira de LED enrollada, un control remoto infrarrojo y un adaptador de corriente.
