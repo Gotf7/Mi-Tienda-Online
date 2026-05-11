@@ -7,19 +7,18 @@ app = Flask(__name__)
 productos = [
     {
         "id": 1,
-        "nombre": "Xiaomi Redmi 14C",
-        "precio": "$120usd",
-        "img": "Xiaomi Redmi 14C.jpg",
-        "detalle": """Xiaomi Redmi 14C smartphone 2024.
-        
-         ✅ 8GB de memoria RAM y 128GB de almacenamiento interno. 
- 
-         ✅ Especificaciones principales:
-   ✔️ Pantalla: LCD de 6,88 pulgadas 120 Hz.
-   ✔️ Procesador: MediaTek Helio G81-Ultra.
-   ✔️ Cámaras: Trasera 50 MP / Frontal 13 MP.
-   ✔️ Batería: 5.160 mAh con carga rápida de 18W.
-   ✔️ Sistema: Xiaomi HyperOS (Android 14)."""
+        "nombre": "Linterna Buytiti SD-559",
+        "precio": "$4200CUP",
+        "img": "Linterna Buytiti.jpg",
+        "detalle": """Linterna es una Buytiti SD-559. 
+        Linterna recargable de alta potencia diseñada para uso táctico y al aire libre. 
+        Capacidad de zoom telescópico, que permite ajustar el haz de luz para iluminar a larga distancia o áreas amplias cercanas. 
+
+Características Principales
+Recargable mediante USB-C: Cuenta con un puerto de carga moderno para una recarga rápida y conveniente.
+Indicador de Batería: Posee luces LED azules que muestran el nivel de carga restante (25%, 50%, 75%, 100%) para evitar quedarse sin luz inesperadamente.
+
+Modos de Iluminación: Generalmente ofrece varios modos, incluyendo luz alta, media y estroboscópica para emergencias."""
     },
     {
         "id": 2,
