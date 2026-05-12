@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GvO Accesorios Móviles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-blue: #00d4ff; --neon-green: #00ff87; --dark-bg: #0f172a; --card-bg: #1e293b; }
+        
+        /* --- LOADER --- */
+        #loader-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--dark-bg); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10000; transition: 0.5s; }
+        .loader-container { position: relative; width: 100px; height: 100px; }
+        .loader-ring { position: absolute; width: 100%; height: 100%; border: 4px solid transparent; border-top-color: var(--primary-blue); border-bottom-color: var(--primary-blue); border-radius: 50%; animation: spin 1.5s infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loader-hidden { opacity: 0; visibility: hidden; }
+
+        body { background-color: var(--dark-bg); color: #f8f9fa; font-family: 'Poppins', sans-serif; }
+        .navbar { background: rgba(30, 41, 59, 0.8) !important; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); sticky; top: 0; z-index: 1000; }
+        .navbar-brand { font-weight: 600; background: linear-gradient(to right, var(--primary-blue), var(--neon-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .slogan-destacado { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; background: rgba(255, 255, 255, 0.03); padding: 10px 25px; border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 50px; }
+        
+        .card { background-color: var(--card-bg); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s; overflow: hidden; }
+        .card:hover { transform: translateY(-10px); border-color: var(--primary-blue); }
+        .card-img-top { background: white; padding: 10px; height: 180px; object-fit: contain; cursor: pointer; }
+        .precio-tag { color: var(--neon-green); font-weight: bold; font-size: 1.2rem; }
+        .btn-whatsapp { background: linear-gradient(45deg, #25d366, #128c7e); border: none; color: white; font-weight: 600; border-radius: 12px; }
+        
+        .modal-content { background-color: var(--card-bg); border-radius: 25px; border: 1px solid var(--primary-blue); }
+        .btn-close { filter: invert(1); }
+    </style>
+</head>
+<body>
+
+    <div id="loader-wrapper">
+        <div class="loader-container"><div class="loader-ring"></div></div>
+        <div class="mt-3 small text-uppercase">Iniciando GvO Móviles...</div>
+    </div>
+
+    <nav class="navbar navbar-dark mb-4">
+        <div class="container justify-content-center">
+            <span class="navbar-brand">🔌 GvO ACCESORIOS MÓVILES</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="text-center mb-5">
+            <div class="slogan-destacado">Calidad y rapidez en La Habana</div>
+        </div>
+
+        <div class="row row-cols-2 row-cols-md-3 g-4" id="contenedor-productos">
+            </div>
+    </div>
+
+    <footer class="text-center py-5 mt-5 border-top border-secondary border-opacity-25">
+        <p>📍 La Habana, Cuba | 📞 +53 58870159</p>
+        <div class="opacity-50 small">© 2026 GvO Accesorios Móviles</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Datos de tus 12 productos
+        const productos = [
+            { id: 1, nombre: "Linterna Buytiti SD-559", precio: "$4200CUP", img: "Linterna Buytiti.jpg", detalle: "Linterna recargable de alta potencia, USB-C, zoom telescópico e indicador de batería." },
+            { id: 2, nombre: "Cargador Samsung 45W", precio: "$4300cup", img: "Cargador Samsung 45W.jpg", detalle: "Super Fast Charging 2.0. Incluye cable USB-C a USB-C." },
+            { id: 3, nombre: "Cargador Moreka 40W", precio: "$4000cup", img: "Cargador Moreka 40W .jpg", detalle: "Carga Superrápida 40W. Puertos PD y QC 3.0. Incluye cable Tipo-C." },
+            { id: 4, nombre: "Power Bank Solar 30,000mAh", precio: "$18000cup", img: "Cargador Portátil 30000mAh.jpg", detalle: "Cables integrados (Tipo-C/V8/iPhone) y panel solar." },
+            { id: 5, nombre: "Power Bank Buytiti 10,000mAh", precio: "$7000cup", img: "Cargador Portátil 10000mAh.jpg", detalle: "Cables integrados, indicador LCD y linterna LED." },
+            { id: 6, nombre: "Cargador para Coche", precio: "$3600cup", img: "Cargador para coche.jpg", detalle: "6 puertos (4 USB y 2 Tipo-C) con pantalla LED de voltaje." },
+            { id: 7, nombre: "Cables 1HORA", precio: "$700cup", img: "Cables 1HORA.jpg", detalle: "Tipo C, V8 e iPhone. Soporta carga rápida." },
+            { id: 8, nombre: "Portacelular", precio: "$3200cup", img: "Portacelular.jpg", detalle: "Soporte de alta seguridad para bicicletas y motos." },
+            { id: 9, nombre: "Bocina Portátil 1Hora", precio: "$11500cup", img: "Bocina inalámbrica.jpg", detalle: "10W potencia, batería 2400mAh, luces RGB y Bluetooth 5.1." },
+            { id: 10, nombre: "Mouse inalámbrico 1HORA", precio: "$4500cup", img: "Mouse 1HORA.jpg", detalle: "Silencioso, DPI ajustable, conexión 2.4GHz estable." },
+            { id: 11, nombre: "Mouse Inalámbrico Buytiti", precio: "$4300cup", img: "Mouse Buytiti.jpg", detalle: "Recargable, luces RGB, Bluetooth y 2.4GHz." },
+            { id: 12, nombre: "Tiras LED RGB", precio: "4000cup", img: "Tiras LED RGB.png", detalle: "Kit 5 metros con control remoto y adaptador. Recortables." }
+        ];
+
+        const contenedor = document.getElementById('contenedor-productos');
+        
+        productos.forEach(p => {
+            contenedor.innerHTML += `
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <img src="static/${p.img}" class="card-img-top" data-bs-toggle="modal" data-bs-target="#modal${p.id}">
+                        <div class="card-body text-center d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 class="card-title mb-2" style="font-size:0.85rem">${p.nombre}</h6>
+                                <p class="precio-tag mb-3">${p.precio}</p>
+                            </div>
+                            <a href="https://wa.me/5358870159?text=Hola! Me interesa el ${p.nombre}" class="btn btn-whatsapp btn-sm w-100 py-2">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="modal${p.id}" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content text-center p-4">
+                            <div class="modal-header border-0"><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                            <div style="background:white; border-radius:15px; padding:10px" class="mb-3">
+                                <img src="static/${p.img}" class="img-fluid" style="max-height:250px">
+                            </div>
+                            <h4 class="precio-tag">${p.precio}</h4>
+                            <p class="small opacity-75">${p.detalle}</p>
+                            <a href="https://wa.me/5358870159?text=Hola! Me interesa el ${p.nombre}" class="btn btn-whatsapp w-100 py-3 mt-3">Pedir por WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        window.addEventListener("load", () => {
+            setTimeout(() => document.getElementById("loader-wrapper").classList.add("loader-hidden"), 600);
+        });
+    </script>
+</body>
+</html>
