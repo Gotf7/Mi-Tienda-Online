@@ -8,11 +8,89 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --primary-blue: #00d4ff; --neon-green: #00ff87; --dark-bg: #0f172a; --card-bg: #1e293b; }
-        #loader-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--dark-bg); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10000; transition: 0.5s; }
-        .loader-container { position: relative; width: 100px; height: 100px; }
-        .loader-ring { position: absolute; width: 100%; height: 100%; border: 4px solid transparent; border-top-color: var(--primary-blue); border-bottom-color: var(--primary-blue); border-radius: 50%; animation: spin 1.5s infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .loader-hidden { opacity: 0; visibility: hidden; }
+            #loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+
+        .loader-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        /* Anillo Exterior (Azul) */
+        .loader-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid transparent;
+            border-top-color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+        }
+
+        /* Anillo Interior (Verde) */
+        .loader-ring-inner {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 4px solid transparent;
+            border-left-color: var(--neon-green);
+            border-right-color: var(--neon-green);
+            border-radius: 50%;
+            animation: spin-reverse 1s linear infinite;
+        }
+
+        .loader-logo {
+            font-size: 1.5rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes spin-reverse {
+            to { transform: rotate(-360deg); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.5; filter: drop-shadow(0 0 5px var(--primary-blue)); }
+            50% { opacity: 1; filter: drop-shadow(0 0 15px var(--neon-green)); }
+        }
+
+        .loader-text {
+            margin-top: 25px;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #f8f9fa;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        .loader-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
         body { background-color: var(--dark-bg); color: #f8f9fa; font-family: 'Poppins', sans-serif; }
         .navbar { background: rgba(30, 41, 59, 0.8) !important; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 1000; }
         .navbar-brand { font-weight: 600; background: linear-gradient(to right, var(--primary-blue), var(--neon-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -46,12 +124,50 @@
     <script>
         const productos = [
             { id: 1, nombre: "Linterna Buytiti SD-559", precio: "$4200CUP", img: "Linterna Buytiti.jpg", detalle: `Linterna Buytiti SD-559 recargable de alta potencia para uso táctico. Zoom telescópico e indicador de batería USB-C.` },
-            { id: 2, nombre: "Cargador Samsung 45W", precio: "$4300cup", img: "Cargador Samsung 45W.jpg", detalle: `Cargador Travel Adapter 45W con carga superrápida 2.0. Incluye cable USB-C a USB-C de 5A.` },
-            { id: 3, nombre: "Cargador Moreka 40W", precio: "$4000cup", img: "Cargador Moreka 40W .jpg", detalle: `Carga Superrápida 40W. Puertos PD y QC 3.0. Incluye cable Tipo-C.` },
-            { id: 4, nombre: "Power Bank Solar 30,000mAh", precio: "$18000cup", img: "Cargador Portátil 30000mAh.jpg", detalle: `Cables integrados (Tipo-C/V8/iPhone) y panel solar.` },
-            { id: 5, nombre: "Power Bank Buytiti 10,000mAh", precio: "$7000cup", img: "Cargador Portátil 10000mAh.jpg", detalle: `Cables integrados, indicador LCD y linterna LED.` },
-            { id: 6, nombre: "Cargador para Coche", precio: "$3600cup", img: "Cargador para coche.jpg", detalle: `6 puertos (4 USB y 2 Tipo-C) con pantalla LED de voltaje.` },
-            { id: 7, nombre: "Cables 1HORA", precio: "$700cup", img: "Cables 1HORA.jpg", detalle: `Tipo C, V8 e iPhone. Soporta carga rápida.` },
+            { id: 2, nombre: "Cargador Samsung 45W", precio: "$4300cup", img: "Cargador Samsung 45W.jpg", detalle: `Cargador Samsung Travel Adapter de 45W con tecnología de carga superrápida 2.0. 
+
+✅️Potencia: Ofrece una capacidad de carga de 45 vatios para dispositivos compatibles. 
+
+✅️Tecnología: Cuenta con la tecnología Super Fast Charging 2.0 para una carga eficiente. 
+
+✅️Conectividad: Incluye un cable USB tipo C a tipo C de 5 amperios. 
+
+✅️Compatibilidad: Diseñado para teléfonos de gama alta como la serie Galaxy S20 Ultra, Note10+ y superiores.` },
+            { id: 3, nombre: "Cargador Moreka 40W", precio: "$4000cup", img: "Cargador Moreka 40W .jpg", detalle: `Cargador Superrápido Moreka modelo AC111. 
+
+Potencia: 40W en total, con puertos de 20W PD y 20W QC 3.0.
+
+Contenido: Incluye el cubo cargador y un cable Tipo-C a Tipo-C de 1 metro.
+
+Características: Cuenta con protección contra sobrecarga.` },
+            { id: 4, nombre: "Power Bank Solar 30,000mAh", precio: "$18000cup", img: "Cargador Portátil 30000mAh.jpg", detalle: `Cargador Portátil de Panel Solar☀️ con múltiples cables integrados.
+✅️Capacidad: 30,000 mAh (111Wh/3.7V), lo que permite múltiples cargas completas para la mayoría de los teléfonos inteligentes.
+
+✅️Cables Integrados: 
+✔️Tipo-C / V8 / (IPhone /iPad)
+✔️USB estándar: Para recargar la propia batería 
+
+✅️Panel Solar con indicador.` },
+            { id: 5, nombre: "Power Bank Buytiti 10,000mAh", precio: "$7000cup", img: "Cargador Portátil 10000mAh.jpg", detalle: `Cargador Portátil Buytiti de 10000mAh. 
+
+Capacidad: 10000 mAh, capaz de proporcionar aproximadamente 1.5 a 2 cargas completas para la mayoría de los teléfonos inteligentes modernos. 
+
+Cables integrados: Incluye 4 cables incorporados compatibles con Micro USB/V8, Tipo C, Lightning y USB. 
+
+Pantalla: Cuenta con un indicador LCD para mostrar el nivel de carga. 
+
+Funciones adicionales: Incorpora una linterna LED, un gancho colgante y una entrada USB.` },
+            { id: 6, nombre: "Cargador para Coche", precio: "$3600cup", img: "Cargador para coche.jpg", detalle: `Cargador de coche USB rápido con múltiples puertos. 
+
+✅️Puertos: Cuenta con 4 puertos USB-A y 2 puertos USB Tipo-C para cargar hasta 6 dispositivos simultáneamente.
+
+✅️Velocidad: Soporta carga rápida, incluyendo tecnologías QC3.0 y PD (Power Delivery).
+
+✅️Funcionalidad: Incorpora una pantalla digital LED para mostrar el voltaje en tiempo real y protección contra sobrecargas.` },
+            { id: 7, nombre: "Cables 1HORA", precio: "$700cup", img: "Cables 1HORA.jpg", detalle: `Cable de Tipo C / V8 / IPhone 
+❇️-Marca 1HORA
+✅️Carga Rápida 
+✅️Transferencia de Datos` },
             { id: 8, nombre: "Portacelular", precio: "$3200cup", img: "Portacelular.jpg", detalle: `Soporte de alta seguridad para bicicletas y motos.` },
             { id: 9, nombre: "Bocina Portátil 1Hora", precio: "$11500cup", img: "Bocina inalámbrica.jpg", detalle: `Bocina inalámbrica 1Hora BOC242 con luces RGB, 10W de potencia y Bluetooth 5.1.` },
             { id: 10, nombre: "Mouse inalámbrico 1HORA", precio: "$4500cup", img: "Mouse 1HORA.jpg", detalle: `Mouse ergonómico silencioso RAT001 con 1600 DPI y conexión 2.4 GHz.` },
