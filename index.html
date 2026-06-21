@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-blue: #00d4ff; --neon-green: #00ff87; --dark-bg: #0f172a; --card-bg: #1e293b; }
+        :root { --primary-blue: #00d4ff; --neon-green: #00ff87; --dark-bg: #0f172a; --card-bg: #1e293b; --danger-red: #ff4a5a; }
             #loader-wrapper {
             position: fixed;
             top: 0;
@@ -95,11 +95,20 @@
         .navbar { background: rgba(30, 41, 59, 0.8) !important; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: sticky; top: 0; z-index: 1000; }
         .navbar-brand { font-weight: 600; background: linear-gradient(to right, var(--primary-blue), var(--neon-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .slogan-destacado { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; background: rgba(255, 255, 255, 0.03); padding: 10px 25px; border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 50px; }
-        .card { background-color: var(--card-bg); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s; overflow: hidden; }
+        .card { background-color: var(--card-bg); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s; overflow: hidden; position: relative; }
         .card:hover { transform: translateY(-10px); border-color: var(--primary-blue); }
         .card-img-top { background: white; padding: 10px; height: 180px; object-fit: contain; cursor: pointer; }
         .precio-tag { color: var(--neon-green); font-weight: bold; font-size: 1.2rem; }
+        
+        /* Etiquetas de Disponibilidad */
+        .badge-stock { position: absolute; top: 10px; right: 10px; padding: 5px 12px; border-radius: 30px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; z-index: 10; }
+        .badge-disponible { background-color: rgba(0, 255, 135, 0.2); color: var(--neon-green); border: 1px solid var(--neon-green); }
+        .badge-agotado { background-color: rgba(255, 74, 90, 0.2); color: var(--danger-red); border: 1px solid var(--danger-red); }
+        
+        /* Botones de WhatsApp */
         .btn-whatsapp { background: linear-gradient(45deg, #25d366, #128c7e); border: none; color: white; font-weight: 600; border-radius: 12px; }
+        .btn-whatsapp.disabled { background: #475569 !important; color: #94a3b8 !important; opacity: 0.6; pointer-events: none; }
+        
         .modal-content { background-color: var(--card-bg); border-radius: 25px; border: 1px solid var(--primary-blue); }
         .btn-close { filter: invert(1); }
     </style>
@@ -122,68 +131,45 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Nota: He cambiado el producto ID 3 (Cargador Moreka) a disponible: false para que veas cómo luce.
         const productos = [
             { id: 1, nombre: "Linterna Buytiti SD-559", precio: "$8usd", disponible: true, img: "Linterna Buytiti.jpg", detalle: `Linterna Buytiti SD-559 recargable de alta potencia para uso táctico. Zoom telescópico e indicador de batería USB-C.` },
-            { id: 2, nombre: "Cargador Samsung 45W", precio: "$8usd", disponible: true, img: "Cargador Samsung 45W.jpg", detalle: `Cargador Samsung Travel Adapter de 45W con tecnología de carga superrápida 2.0. 
-
-✅️Potencia: Ofrece una capacidad de carga de 45 vatios para dispositivos compatibles. 
-
-✅️Tecnología: Cuenta con la tecnología Super Fast Charging 2.0 para una carga eficiente. 
-
-✅️Conectividad: Incluye un cable USB tipo C a tipo C de 5 amperios. 
-
-✅️Compatibilidad: Diseñado para teléfonos de gama alta como la serie Galaxy S20 Ultra, Note10+ y superiores.` },
-            { id: 3, nombre: "Cargador Moreka 40W", precio: "$8usd", disponible: true, img: "Cargador Moreka 40W .jpg", detalle: `Cargador Superrápido Moreka modelo AC111. 
-
-Potencia: 40W en total, con puertos de 20W PD y 20W QC 3.0.
-
-Contenido: Incluye el cubo cargador y un cable Tipo-C a Tipo-C de 1 metro.
-
-Características: Cuenta con protección contra sobrecarga.` },
-            { id: 4, nombre: "Power Bank Solar 30,000mAh", precio: "$35usd", disponible: true, img: "Cargador Portátil 30000mAh.jpg", detalle: `Cargador Portátil de Panel Solar☀️ con múltiples cables integrados.
-✅️Capacidad: 30,000 mAh (111Wh/3.7V), lo que permite múltiples cargas completas para la mayoría de los teléfonos inteligentes.
-
-✅️Cables Integrados: 
-✔️Tipo-C / V8 / (IPhone /iPad)
-✔️USB estándar: Para recargar la propia batería 
-
-✅️Panel Solar con indicador.` },
-            { id: 5, nombre: "Power Bank Buytiti 10,000mAh", precio: "$13usd", disponible: true, img: "Cargador Portátil 10000mAh.jpg", detalle: `Cargador Portátil Buytiti de 10000mAh. 
-
-Capacidad: 10000 mAh, capaz de proporcionar aproximadamente 1.5 a 2 cargas completas para la mayoría de los teléfonos inteligentes modernos. 
-
-Cables integrados: Incluye 4 cables incorporados compatibles con Micro USB/V8, Tipo C, Lightning y USB. 
-
-Pantalla: Cuenta con un indicador LCD para mostrar el nivel de carga. 
-
-Funciones adicionales: Incorpora una linterna LED, un gancho colgante y una entrada USB.` },
-            { id: 6, nombre: "Cargador para Coche", precio: "$7usd", disponible: true, img: "Cargador para coche.jpg", detalle: `Cargador de coche USB rápido con múltiples puertos. 
-
-✅️Puertos: Cuenta con 4 puertos USB-A y 2 puertos USB Tipo-C para cargar hasta 6 dispositivos simultáneamente.
-
-✅️Velocidad: Soporta carga rápida, incluyendo tecnologías QC3.0 y PD (Power Delivery).
-
-✅️Funcionalidad: Incorpora una pantalla digital LED para mostrar el voltaje en tiempo real y protección contra sobrecargas.` },
-            { id: 7, nombre: "Cables 1HORA", precio: "$700cup", disponible: true, img: "Cables 1HORA.jpg", detalle: `Cable de Tipo C / V8 / IPhone 
-❇️-Marca 1HORA
-✅️Carga Rápida 
-✅️Transferencia de Datos` },
+            { id: 2, nombre: "Cargador Samsung 45W", precio: "$8usd", disponible: true, img: "Cargador Samsung 45W.jpg", detalle: `Cargador Samsung Travel Adapter de 45W con tecnología de carga superrápida 2.0. \n\n✅️Potencia: Ofrece una capacidad de carga de 45 vatios para dispositivos compatibles. \n\n✅️Tecnología: Cuenta con la tecnología Super Fast Charging 2.0 para una carga eficiente. \n\n✅️Conectividad: Incluye un cable USB tipo C a tipo C de 5 amperios. \n\n✅️Compatibilidad: Diseñado para teléfonos de gama alta como la serie Galaxy S20 Ultra, Note10+ y superiores.` },
+            { id: 3, nombre: "Cargador Moreka 40W", precio: "$8usd", disponible: false, img: "Cargador Moreka 40W .jpg", detalle: `Cargador Superrápido Moreka modelo AC111. \n\nPotencia: 40W en total, con puertos de 20W PD y 20W QC 3.0.\n\nContenido: Incluye el cubo cargador y un cable Tipo-C a Tipo-C de 1 metro.\n\nCaracterísticas: Cuenta con protección contra sobrecarga.` },
+            { id: 4, nombre: "Power Bank Solar 30,000mAh", precio: "$35usd", disponible: false, img: "Cargador Portátil 30000mAh.jpg", detalle: `Cargador Portátil de Panel Solar☀️ con múltiples cables integrados.\n✅️Capacidad: 30,000 mAh (111Wh/3.7V), lo que permite múltiples cargas completas para la mayoría de los teléfonos inteligentes.\n\n✅️Cables Integrados: \n✔️Tipo-C / V8 / (IPhone /iPad)\n✔️USB estándar: Para recargar la propia batería \n\n✅️Panel Solar con indicador.` },
+            { id: 5, nombre: "Power Bank Buytiti 10,000mAh", precio: "$13usd", disponible: false, img: "Cargador Portátil 10000mAh.jpg", detalle: `Cargador Portátil Buytiti de 10000mAh. \n\nCapacidad: 10000 mAh, capaz de proporcionar aproximadamente 1.5 a 2 cargas completas para la mayoría de los teléfonos inteligentes modernos. \n\nCables integrados: Incluye 4 cables incorporados compatibles con Micro USB/V8, Tipo C, Lightning y USB. \n\nPantalla: Cuenta con un indicador LCD para mostrar el nivel de carga. \n\nFunciones adicionales: Incorpora una linterna LED, un gancho colgante y una entrada USB.` },
+            { id: 6, nombre: "Cargador para Coche", precio: "$7usd", disponible: true, img: "Cargador para coche.jpg", detalle: `Cargador de coche USB rápido con múltiples puertos. \n\n✅️Puertos: Cuenta con 4 puertos USB-A y 2 puertos USB Tipo-C para cargar hasta 6 dispositivos simultáneamente.\n\n✅️Velocidad: Soporta carga rápida, incluyendo tecnologías QC3.0 y PD (Power Delivery).\n\n✅️Funcionalidad: Incorpora una pantalla digital LED para mostrar el voltaje en tiempo real y protección contra sobrecargas.` },
+            { id: 7, nombre: "Cables 1HORA", precio: "$700cup", disponible: true, img: "Cables 1HORA.jpg", detalle: `Cable de Tipo C / V8 / IPhone \n Lay-Marca 1HORA\n✅️Carga Rápida \n✅️Transferencia de Datos` },
             { id: 8, nombre: "Portacelular", precio: "$5usd", disponible: true, img: "Portacelular.jpg", detalle: `Soporte de alta seguridad para bicicletas y motos.` },
             { id: 9, nombre: "Tiras LED RGB", precio: "$8usd", disponible: true, img: "Tiras LED RGB.png", detalle: `Kit de 5 metros con control remoto y adaptador. Multicolores y recortables.` }
         ];
 
         const contenedor = document.getElementById('contenedor-productos');
         productos.forEach(p => {
+            // Lógica para determinar las etiquetas de disponibilidad y el estado del botón
+            const stockBadge = p.disponible 
+                ? `<span class="badge-stock badge-disponible">Disponible</span>` 
+                : `<span class="badge-stock badge-agotado">Agotado</span>`;
+            
+            const btnLink = p.disponible 
+                ? `href="https://wa.me/5358870159?text=Hola! Me interesa el ${p.nombre}"` 
+                : `href="#"`;
+                
+            const btnClase = p.disponible ? '' : 'disabled';
+            const btnTexto = p.disponible ? 'Comprar' : 'Agotado';
+            const modalBtnTexto = p.disponible ? 'Pedir por WhatsApp' : 'Sin Stock';
+
             contenedor.innerHTML += `
                 <div class="col">
                     <div class="card h-100 shadow-sm">
+                        ${stockBadge}
                         <img src="static/${p.img}" class="card-img-top" data-bs-toggle="modal" data-bs-target="#modal${p.id}">
                         <div class="card-body text-center d-flex flex-column justify-content-between">
                             <div>
                                 <h6 class="card-title mb-2" style="font-size:0.85rem">${p.nombre}</h6>
                                 <p class="precio-tag mb-3">${p.precio}</p>
                             </div>
-                            <a href="https://wa.me/5358870159?text=Hola! Me interesa el ${p.nombre}" class="btn btn-whatsapp btn-sm w-100 py-2">Comprar</a>
+                            <a ${btnLink} class="btn btn-whatsapp btn-sm w-100 py-2 ${btnClase}">${btnTexto}</a>
                         </div>
                     </div>
                 </div>
@@ -191,12 +177,13 @@ Funciones adicionales: Incorpora una linterna LED, un gancho colgante y una entr
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content text-center p-4">
                             <div class="modal-header border-0"><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-                            <div style="background:white; border-radius:15px; padding:10px" class="mb-3">
+                            <div style="background:white; border-radius:15px; padding:10px" class="mb-3 position-relative">
+                                ${stockBadge}
                                 <img src="static/${p.img}" class="img-fluid" style="max-height:250px">
                             </div>
                             <h4 class="precio-tag">${p.precio}</h4>
-                            <p class="small opacity-75">${p.detalle}</p>
-                            <a href="https://wa.me/5358870159?text=Hola! Me interesa el ${p.nombre}" class="btn btn-whatsapp w-100 py-3 mt-3">Pedir por WhatsApp</a>
+                            <p class="small opacity-75">${p.detalle.replace(/\n/g, '<br>')}</p>
+                            <a ${btnLink} class="btn btn-whatsapp w-100 py-3 mt-3 ${btnClase}">${modalBtnTexto}</a>
                         </div>
                     </div>
                 </div>`;
